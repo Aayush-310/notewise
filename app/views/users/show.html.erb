@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.email %></h1>
+
+<% if @user.notes.any? %>
+  <ul>
+    <% @user.notes.each do |note| %>
+      <li><%= link_to note.title, note_path(note) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No notes found.</p>
+<% end %>
+
+<% if user_signed_in? %>
+      <li><%= link_to 'My Profile', user_path(current_user) %>
