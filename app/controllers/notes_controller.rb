@@ -13,7 +13,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @note = current_user.notes.build
   end
 
   # GET /notes/1/edit
@@ -22,7 +22,7 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    @note = current_user.notes.build(note_params)
+    @note = Note.new(note_params)
 
     respond_to do |format|
       if @note.save
@@ -36,9 +36,7 @@ class NotesController < ApplicationController
   end
 
   # PATCH/PUT /notes/1 or /notes/1.json
-  def update
-    @note = current_user.notes.find(params[:id])
-    
+  def update   
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to note_url(@note), notice: "Note was successfully updated." }
@@ -52,7 +50,6 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-    @note = current_user.notes.find(params[:id])
     @note.destroy
 
     respond_to do |format|
@@ -69,6 +66,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :body)
+      params.require(:note).permit(:title, :body, :user_id)
     end
 end
