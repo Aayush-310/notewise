@@ -3,14 +3,18 @@
   <head>
     <title>Backend</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%# <meta http-equiv="refresh" content="2"> %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body style="margin-bottom:100px; ">
+    <%= render "layouts/navbar"%>
     <%= yield %>
+    <%= render "layouts/footer"%>
+
   </body>
 </html>

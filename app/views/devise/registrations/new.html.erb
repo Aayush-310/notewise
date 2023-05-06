@@ -1,3 +1,4 @@
+<div class="text-center" style="margin-top:20px; margin-bottom:25px">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -16,14 +17,21 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field" style="margin-bottom:5px">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+  <%= f.submit class: "login-signup-button" do %>
+  <span>Hover</span>
+  <%= content_tag :svg, class: "border-container" do %>
+    <%= content_tag :rect, nil, pathLength: 100, class: "border-line" %>
+  <% end %>
+<% end %>
+
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

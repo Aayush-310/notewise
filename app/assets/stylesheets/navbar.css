@@ -1,0 +1,23 @@
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .navbar{
+    font-size: 20px;
+    font-family: "GFS Didot", serif;
+  }
+  .navbar-brand{
+    font-size: 25px;
+    font-weight:bolder;
+  }
+  .navbar-avatar {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-top: 7px;
+  
+
+
+  }

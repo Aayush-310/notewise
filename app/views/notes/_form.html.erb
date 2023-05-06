@@ -13,12 +13,16 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title , placeholder:"Heading"%>
   </div>
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body,placeholder:"Note body" %>
+  </div>
+  <div>
+    <%= form.label :tags, style: "display: block" %>
+    <%= form.text_field :tags , placeholder:"Add tags" %>
   </div>
   <div>
     <%= form.hidden_field :user_id, value:current_user.id %>

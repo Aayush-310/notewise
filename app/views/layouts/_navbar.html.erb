@@ -1,0 +1,44 @@
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/86245b6067.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%= asset_path('navbar.css') %>">
+<link href="<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+
+
+</head>
+<nav class= "navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "Notewise",notes_path,class:"navbar-brand"%>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><%=link_to "Home",notes_path %></li>
+            <li><%= link_to "About",pages_about_path %></li>
+            <li><%= link_to "Create Note", new_note_path%></li>
+            </ul>
+            <form class="navbar-form navbar-center" action="/search" method="get">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">      
+      <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+      </div>
+    </form>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+              <li><div class="navbar-avatar">
+    <%= link_to edit_user_registration_path do %>
+      <i class="fa-sharp fa-solid fa-user" style="color: #dacde4; margin-right:4px"></i>
+    <% end %>
+    
+
+  </div></li>
+  <%else%><li><%= link_to " Sign Up ",new_user_registration_path, class:"glyphicon glyphicon-user" %></li>
+      <li><%= link_to " Login", new_user_session_path,class:"glyphicon glyphicon-log-in"%></li>
+
+              <%end%>
+      
+    </ul>
+
+    </nav>

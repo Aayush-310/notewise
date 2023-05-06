@@ -4,7 +4,7 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.all
+    @notes = current_user.notes.all
   end
 
   # GET /notes/1 or /notes/1.json
@@ -58,6 +58,14 @@ class NotesController < ApplicationController
     end
   end
 
+  def search
+    if params[:search].present?
+      @notes = current_user.notes.search(params[:search])
+    else
+      @notes = []
+    end
+    puts "searching"
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
@@ -66,6 +74,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :body, :user_id)
+      params.require(:note).permit(:title, :body, :user_id, :search,:tags)
     end
 end

@@ -1,0 +1,21 @@
+<% if params[:search].present? %>
+  <% if @notes.any? %>
+    <ul>
+      <% @notes.each do |note| %>
+        <div class="note-block">
+      <h2><%= note.title %></h2>
+      <p><%= note.body %></p>
+      <%= link_to "Edit Note", edit_note_path(note) %>
+    </div>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No notes found.</p>
+  <% end %>
+<% else %>
+  <ul>
+    <% current_user.notes.each do |note| %>
+      <li><%= note.title %></li>
+    <% end %>
+  </ul>
+<% end %>
