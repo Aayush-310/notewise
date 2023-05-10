@@ -29,3 +29,5 @@ To view a note, simply click on the note title on the home page. This will take 
 ![alt text](https://github.com/Aayush-310/notewise/blob/tags/images/Screenshot 2023-05-10 094242.png?raw=true)
 
 ![Alt text](backend/images/Screenshot 2023-05-10 094242.png?raw=true "Title")
+
+![Screenshot](/images/homepage.png)
