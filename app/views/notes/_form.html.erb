@@ -22,7 +22,7 @@
   </div>
   <div>
     <%= form.label :tags, style: "display: block" %>
-    <%= form.text_field :tags , placeholder:"Add tags" %>
+    <%= form.text_field :tags ,multiple: true, placeholder:"Add tags" %>
   </div>
   <div>
     <%= form.hidden_field :user_id, value:current_user.id %>
