@@ -1,24 +1,27 @@
-# README
+Notewise
+Notewise is a web application that allows users to create and organize notes. It is built using Ruby on Rails and PostgreSQL.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation
+To run this application, you will need to have Ruby and PostgreSQL installed on your machine. You can download Ruby from the official website: https://www.ruby-lang.org/en/downloads/ and PostgreSQL from: https://www.postgresql.org/download/
 
-Things you may want to cover:
+Once you have Ruby and PostgreSQL installed, you can clone this repository to your local machine using the following command:
+https://github.com/Aayush-310/notewise.git
 
-* Ruby version
+After cloning the repository, navigate to the root directory of the project and install the required dependencies using the following command:
 
-* System dependencies
+bundle install
 
-* Configuration
+Next, you will need to create the database and run the migrations. To do this, run the following commands:
 
-* Database creation
+rails db:create
+rails db:migrate
 
-* Database initialization
+Usage
+To start the application, navigate to the root directory of the project and run the following command:
+rails s
 
-* How to run the test suite
+This will start the Rails development server and the application will be accessible at http://localhost:3000.
 
-* Services (job queues, cache servers, search engines, etc.)
+To create a new note, click on the "New Note" button on the home page and fill in the note details. Once the note is created, it will be displayed on the home page.
 
-* Deployment instructions
-
-* ...
+To view a note, simply click on the note title on the home page. This will take you to a page where you can view the note details and make any necessary edits.
