@@ -27,3 +27,5 @@ To create a new note, click on the "New Note" button on the home page and fill i
 To view a note, simply click on the note title on the home page. This will take you to a page where you can view the note details and make any necessary edits.
 
 ![alt text](https://github.com/Aayush-310/notewise/blob/tags/images/Screenshot 2023-05-10 094242.png?raw=true)
+
+![Alt text](backend/images/Screenshot 2023-05-10 094242.png?raw=true "Title")
