@@ -10,6 +10,16 @@
   </p>
   <p>
     <strong>Tags:</strong>
-    <%= note.tags %>
+    <%= note.tags.join(", ") %>
   </p>
+  <!--paragraph showing the reminder if present -->
+  
+    
+    <% if note.reminder.present? %>
+    <p>
+<strong>Reminder:</strong>
+<%= note.reminder %>
+ </p>
+    <%end%>
+   
 </div>

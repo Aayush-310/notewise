@@ -24,6 +24,10 @@
     <%= form.label :tags, style: "display: block" %>
     <%= form.text_field :tags ,multiple: true, placeholder:"Add tags" %>
   </div>
+  <!--div for taking reminder input -->
+  <div>
+    <%= form.label :reminder, style: "display: block" %>
+    <%= form.datetime_local_field :reminder ,placeholder:"Add reminder" %>
   <div>
     <%= form.hidden_field :user_id, value:current_user.id %>
   </div>

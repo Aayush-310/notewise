@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_06_124632) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_130411) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_124632) do
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false
     t.string "tags"
+    t.datetime "reminder"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 

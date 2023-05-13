@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  
   before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
@@ -23,9 +24,25 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     @note = Note.new(note_params)
-
+    tags = Array(params[:note][:tags]).map(&:strip).reject(&:empty?)
+    @note.tags = tags
+  
+    # Check if reminder is provided
+    if params[:note][:reminder].present?
+      # Parse the provided reminder datetime string
+      reminder_datetime = DateTime.parse(params[:note][:reminder])
+  
+      # Set the reminder for the note
+      @note.reminder = reminder_datetime
+    end
+  
     respond_to do |format|
       if @note.save
+        # Enqueue the reminder job if a reminder is set
+        if @note.reminder.present?
+          ReminderJob.perform_later(@note.id)
+        end
+  
         format.html { redirect_to note_url(@note), notice: "Note was successfully created." }
         format.json { render :show, status: :created, location: @note }
       else
@@ -34,6 +51,7 @@ class NotesController < ApplicationController
       end
     end
   end
+  
 
   # PATCH/PUT /notes/1 or /notes/1.json
   def update   
@@ -64,8 +82,9 @@ class NotesController < ApplicationController
     else
       @notes = []
     end
-    puts "searching"
   end
+
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
@@ -74,6 +93,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :body, :user_id, :search,:tags)
+      params.require(:note).permit(:title, :body, :user_id, :search,:reminder ,tags: [])
     end
 end
