@@ -7,12 +7,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <%= action_cable_meta_tag %>
+
   </head>
 
-  <body >
+  <body>
   <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
     <%= render "layouts/navbar" %>
   <% end %>

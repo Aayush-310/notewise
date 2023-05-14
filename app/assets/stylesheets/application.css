@@ -18,3 +18,9 @@ body{
     position: relative;
     min-height: 100vh;
 }
+body {
+    background-image: url('images/img/layer-base.png');
+    /* Add any additional background properties or styles as needed */
+  }
+  
+  
