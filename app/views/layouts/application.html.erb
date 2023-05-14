@@ -12,10 +12,15 @@
     <%= action_cable_meta_tag %>
   </head>
 
-  <body style="margin-bottom:100px; ">
-    <%= render "layouts/navbar"%>
-    <%= yield %>
-    <%= render "layouts/footer"%>
+  <body >
+  <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+    <%= render "layouts/navbar" %>
+  <% end %>
 
-  </body>
+  <%= yield %>
+
+  <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+    <%= render "layouts/footer" %>
+  <% end %>
+</body>
 </html>

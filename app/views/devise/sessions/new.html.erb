@@ -1,28 +1,61 @@
-<div class="text-center" style="margin-top:20px; margin-bottom:25px">
-<h2>Log in</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="<%= asset_path('main.css') %>">
+  <script src="<%= asset_path('libs/gsap/gsap.min.js') %>" defer></script>
+  <script src="<%= asset_path('libs/gsap/ScrollTrigger.min.js') %>" defer></script>
+  <script src="<%= asset_path('libs/gsap/ScrollSmoother.min.js') %>" defer></script>
+  <script src="<%= asset_path('app.js') %>" defer></script>
+</head>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="wrapper">
+  <div class="content">
+    <header class="main-header">
+      <div class="layers">
+        <div class="layer__header">
+          <div class="layers__caption">Welcome to Notewise</div>
+          <div class="layers__title">Notes To Life</div>
+        </div>
+        <div class="layer layers__base" style="background-image: url(<%= asset_path('img/layer-base.png', type: :image) %>);"></div>
+        <div class="layer layers__middle" style="background-image: url(<%= asset_path('img/layer-middle.png', type: :image) %>);"></div>
+        <div class="layer layers__front" style="background-image: url(<%= asset_path('img/layer-front.png', type: :image) %>);"></div>
+      </div>
+    </header>
+
+    <article class="main-article" style="background-image: url(<%= asset_path('img/dungeon.jpg', type: :image) %>);">
+      <div class="main-article__content">
+        <h2 class="main-article__header">Log in</h2>
+        <p class="main-article__paragraph">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
+          <% end %>
+<div class="shared_links">
+          <%= render "devise/shared/links" %>
+          </div>
+          <div class="copy">@Notewise</div>
+        </p>
+      </div>
+    </article>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>
