@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'user/show'
   get '/search', to: 'notes#search'
+  post 'share', on: :member
   devise_for :users
   resources :users, only: [:show]
   resources :notes

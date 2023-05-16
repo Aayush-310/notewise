@@ -1,0 +1,39 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 800px; /* Adjust the max-width value as per your requirement */
+  margin: 0 auto; /* Centers the container horizontally */
+}
+
+.card {
+  width: 200px; /* Set the width to approximately 200px */
+  height: 250px;
+  border-radius: 30px;
+  background: #212121;
+  padding: 20px;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+  margin-right: 20px; /* Adds spacing between the cards */
+  margin-bottom: 20px; /* Adds spacing between the rows */
+}
+
+.card-title{
+  font-weight: 800;
+  font-size: large;
+}
+.card:last-child {
+  margin-right: 0; /* Removes the margin-right from the last card in each row */
+}
+p.show-note{
+
+  /* Set the padding to 5px */
+  padding: 5px;
+  /* Set the font size to 16px */
+  font-size: 16px;
+  /* Set the font weight to 800 */
+  font-weight: 800;
+  /* Set the border radius to 5px */
+  border-radius: 5px 5px 0 0;
+
+}

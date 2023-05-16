@@ -1,18 +1,53 @@
+<head>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .card {
+      width: 190px;
+      height: 254px;
+      border-radius: 30px;
+      background: #212121;
+      box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                  -15px -15px 30px rgb(60, 60, 60);
+      color: white; /* Add text color if needed */
+      padding: 20px; /* Adjust padding as needed */
+      margin-bottom: 20px; /* Adjust the gap between cards */
+    }
+
+    @media (max-width: 767px) {
+      #notes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .col-md-3 {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
 
 <p style="color: green"><%= notice %></p>
 
 <h1>Notes</h1>
 
-<div id="notes" >
+<div id="notes" class="row">
   <% @notes.each do |note| %>
-    <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-title">
+          <%= note.title %>
+        </div>
+        <div class="card-content">
+          <%= truncate(note.body, length: 100) %>
+        </div>
+        <p class="show-note">
+          <%= link_to "Show this note", note %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
 
 <%= link_to "New note", new_note_path %>
 <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-
-

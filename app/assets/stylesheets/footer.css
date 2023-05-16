@@ -1,61 +1,60 @@
+/* Sticky Footer */
 footer {
-    position:sticky;
-    bottom: 0;
-    left:0;
-    right:0;
-    width: 100%;
-    text-align: center;
-    background-color:#333 ;
-    color:#fff;
-    font-family: "GFS Didot", serif;
-    
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  font-family: "GFS Didot", serif;
+  padding: 20px;
+  max-height: 250px;
+}
 
-  }
- input.form-control{
-    width:50%;
-    position: relative;
- }
- ul{
-    list-style-type:none ;
- }
- 
- .footer {
-    background-color: #262626;
-    color: #fff;
-  }
-  
-  .footer h3 {
-    font-size: 20px;
+/* Form Control */
+input.form-control {
+  width: 50%;
+}
 
-  }
-  
-  .footer p {
-    font-size: 14px;
+/* Footer Styling */
+.footer {
+  background-color: #262626;
+  color: #fff;
+  padding: 20px;
+}
 
-  }
-  
-  .footer ul {
+.footer h3 {
+  font-size: 20px;
+}
 
-    list-style: none;
-  }
-  
-  .footer li {
-    font-size: 14px;
-    line-height: 1.5;
-    
-  }
-  
-  .footer li i {
-    margin-right: 10px;
-  }
+.footer p {
+  font-size: 14px;
+}
 
-  .footer-about .footer-contact-us{
-    margin: 10px;
-  }
-  .signup-email-form{
-    font-size: 15px;
+.footer ul {
+  list-style: none;
+}
 
-  }
-  .button-subscribe{
-    color:black
-  }
+.footer li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer li i {
+  margin-right: 10px;
+}
+
+.footer-about,
+.footer-contact-us {
+  margin: 10px;
+}
+
+.signup-email-form {
+  font-size: 15px;
+}
+
+.button-subscribe {
+  color: black;
+}

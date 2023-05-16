@@ -84,6 +84,18 @@ class NotesController < ApplicationController
     end
   end
 
+
+  def share
+    @note = Note.find(params[:id])
+    share_content = "Check out my note:\n\nTitle: #{@note.title}\n\nBody: #{@note.body}"
+  
+    # Send the content to messaging apps (e.g., Facebook Messenger)
+    messenger_url = "fb-messenger://share/?link=#{URI.encode(share_content)}"
+    redirect_to messenger_url
+  
+    # Or send the content via email (using Action Mailer)
+    NoteMailer.share_note_email(@note, share_content).deliver_now
+  end
  
   private
     # Use callbacks to share common setup or constraints between actions.
