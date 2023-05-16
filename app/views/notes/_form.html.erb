@@ -24,6 +24,10 @@
     <%= form.label :tags, style: "display: block" %>
     <%= form.text_field :tags ,multiple: true, placeholder:"Add tags" %>
   </div>
+     <div>
+      <%= form.label :attachments, style:"display:block"%>
+    <%= form.file_field :attachments, multiple: true %>
+</div>
   <!--div for taking reminder input -->
   <div>
     <%= form.label :reminder, style: "display: block" %>

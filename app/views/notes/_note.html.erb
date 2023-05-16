@@ -1,4 +1,4 @@
-<div id="<%= dom_id note %>">
+<div id="<%= dom_id(note) %>">
   <p>
     <strong>Title:</strong>
     <%= note.title %>
@@ -8,20 +8,37 @@
     <strong>Body:</strong>
     <%= note.body %>
   </p>
+
   <p>
     <strong>Tags:</strong>
     <%= note.tags.join(", ") %>
   </p>
-  <!--paragraph showing the reminder if present -->
-  
-    
-    <% if note.reminder.present? %>
-    <p>
-<strong>Reminder:</strong>
-<%= note.reminder %>
- </p>
-    <%end%>
-    <%= button_to "Share", share_note_path(note), method: :post, class: "share-button" %>
+<p>
+<% if @note.attachments.attached? %>
+  <h3>Attachments:</h3>
+  <ul>
+    <% @note.attachments.each do |attachment| %>
+      <li><%= link_to attachment.filename, url_for(attachment) %></li>
+    <% end %>
+  </ul>
+<% end %>
+</p>
 
-   
+  <% if note.reminder.present? %>
+    <p>
+      <strong>Reminder:</strong>
+      <%= note.reminder %>
+    </p>
+  <% end %>
+ 
+
+  <%= form_with(model: note, url: share_note_path(note), method: :post, class: "share-form") do |form| %>
+    <div>
+      <%= form.label :recipient_email, "Recipient's Email" %>
+      <%= form.email_field :recipient_email %>
+    </div>
+    <div>
+      <%= form.submit 'Share', class: 'share-button' %>
+    </div>
+  <% end %>
 </div>

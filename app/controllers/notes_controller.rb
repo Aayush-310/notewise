@@ -84,18 +84,28 @@ class NotesController < ApplicationController
     end
   end
 
+# app/controllers/notes_controller.rb
 
-  def share
-    @note = Note.find(params[:id])
-    share_content = "Check out my note:\n\nTitle: #{@note.title}\n\nBody: #{@note.body}"
-  
-    # Send the content to messaging apps (e.g., Facebook Messenger)
-    messenger_url = "fb-messenger://share/?link=#{URI.encode(share_content)}"
-    redirect_to messenger_url
-  
-    # Or send the content via email (using Action Mailer)
-    NoteMailer.share_note_email(@note, share_content).deliver_now
+
+def share
+  @note = Note.find(params[:id])
+  @recipient_email = params[:recipient_email]
+
+  if @note && @recipient_email.present?
+    NoteMailer.share_note_email(@note, @recipient_email).deliver_now
+    flash[:notice] = 'Note shared successfully!'
+  else
+    flash[:alert] = 'Unable to share note. Please provide a valid recipient email.'
   end
+
+  redirect_to @note
+end
+
+
+
+
+
+  
  
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -105,6 +115,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :body, :user_id, :search,:reminder ,tags: [])
+      params.require(:note).permit(:title, :body, :user_id, :search,:reminder,:recipient_email ,tags: [], attachments: [])
     end
 end

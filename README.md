@@ -128,3 +128,5 @@ This will start the Action Cable server, which will handle WebSocket connections
 That's it! You've now set up Action Cable in your Rails application with Redis as the pub-sub backend. You can now use the ReminderChannel to send and receive messages between the server and clients. Remember to adjust the code according to your specific application's needs and business logic.
 
 Rails g channel Reminder
+
+to send emails change the email and password field in development.rb file after geenrating a app password for the website.
