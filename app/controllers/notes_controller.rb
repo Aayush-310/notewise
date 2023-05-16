@@ -112,9 +112,11 @@ def summarize
   @summary = summarizer.generate_summary(@note.title, @note.body)
 
   respond_to do |format|
-    format.js
+    format.html # Renders `summarizer.html.erb`
   end
 end
+
+
 
 
 
