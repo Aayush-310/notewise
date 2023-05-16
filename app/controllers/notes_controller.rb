@@ -2,6 +2,8 @@ class NotesController < ApplicationController
   
   before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  
+require 'openai'
 
   # GET /notes or /notes.json
   def index
@@ -102,11 +104,21 @@ def share
 end
 
 
+# app/controllers/notes_controller.rb
+
+def summarize
+  @note = Note.find(params[:id])
+  summarizer = NoteSummarizer.new
+  @summary = summarizer.generate_summary(@note.title, @note.body)
+
+  respond_to do |format|
+    format.js
+  end
+end
 
 
 
-  
- 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note

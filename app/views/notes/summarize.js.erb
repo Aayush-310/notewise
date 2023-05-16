@@ -1,0 +1,6 @@
+<!-- app/views/notes/summarize.js.erb -->
+
+document.addEventListener('DOMContentLoaded', () => {
+  const summaryElement = document.getElementById('summary-<%= @note.id %>');
+  summaryElement.textContent = '<%= j render @summary %>';
+});

@@ -13,16 +13,13 @@
     <strong>Tags:</strong>
     <%= note.tags.join(", ") %>
   </p>
-<p>
-<% if @note.attachments.attached? %>
-  <h3>Attachments:</h3>
-  <ul>
-    <% @note.attachments.each do |attachment| %>
-      <li><%= link_to attachment.filename, url_for(attachment) %></li>
-    <% end %>
-  </ul>
-<% end %>
-</p>
+  <p>
+    <%= link_to 'Generate Summary', summarize_note_path(note), method: :get, remote: true %>
+  <!-- Add a container for the summary -->
+  <div id="summary-container">
+  <%= render partial: 'summary', locals: { summary: @summary } %>
+  </div>
+  </p>
 
   <% if note.reminder.present? %>
     <p>
@@ -30,9 +27,45 @@
       <%= note.reminder %>
     </p>
   <% end %>
- 
 
-  <%= form_with(model: note, url: share_note_path(note), method: :post, class: "share-form") do |form| %>
+  <% note.attachments.each do |attachment| %>
+    <% if attachment.blob.content_type.start_with?('image/') %>
+      <p>
+        <strong>Image:</strong>
+        <%= image_tag attachment %>
+      </p>
+    <% elsif attachment.blob.content_type.start_with?('audio/') %>
+      <p>
+        <strong>Audio:</strong>
+        <%= audio_tag attachment %>
+      </p>
+    <% elsif attachment.blob.content_type.start_with?('video/') %>
+      <p>
+        <strong>Video:</strong>
+        <%= video_tag attachment %>
+      </p>
+      <% elsif attachment.blob.content_type == 'application/msword' %>
+  <p>
+    <strong>Document:</strong>
+    <iframe src="https://docs.google.com/gview?url=<%= rails_blob_url(attachment) %>&embedded=true" frameborder="0" width="100%" height="600"></iframe>
+  </p>
+<% elsif attachment.blob.content_type == 'application/pdf' %>
+  <p>
+    <strong>PDF:</strong>
+    <%= link_to attachment.filename, rails_blob_path(attachment) %>
+  </p>
+
+
+    <% else %>
+      <p>
+        <strong>Attachment:</strong>
+        <%= link_to attachment.filename, rails_blob_path(attachment) %>
+      </p>
+    <% end %>
+  <% end %>
+  
+
+  <%= form_with(url: share_note_path(note), method: :post, class: "share-form") do |form| %>
     <div>
       <%= form.label :recipient_email, "Recipient's Email" %>
       <%= form.email_field :recipient_email %>
