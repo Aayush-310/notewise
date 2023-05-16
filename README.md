@@ -31,6 +31,9 @@ To view a note, simply click on the note title on the home page. This will take 
 ![Screenshot](/images/edit_user.png)
 ![Screenshot](/images/edit_note.png)
 ![Screenshot](/images/new_note.png)
+![Screenshot](/images/basic-page.png)
+![Screenshot](/images/login.png)
+![Screenshot](/images/signup page.png)
 
 sidekiq has been used. So it needs to be started as a service in the server. sudo apt install redis-server
 sudo service redis-server start
