@@ -26,7 +26,7 @@ To view a note, simply click on the note title on the home page. This will take 
 
 The application also uses Sidekiq for background processing. To start Sidekiq as a service in the server, run the following commands:
 
-Copy codesudo apt install redis-server
+Copy codesudo apt install-server
 sudo service redis-server start
 sudo service redis-server stop
 To configure Redis as the pub-sub backend, follow these steps:
@@ -233,3 +233,25 @@ file for details.
 ![Screenshot](/images/basic-page.png)
 ![Screenshot](/images/login.png)
 ![Screenshot](/images/signup page.png)
+
+TODO:
+
+- Voice to Text and Text to voice conversion
+- Integrate Vicuna AI
+  --for accurate answers
+
+            ./main -i --interactive-first -r "### Human:" --temp 0 -c 2048 -n -1 --ignore-eos --repeat_penalty 1.2 --instruct -m ./models/ggml-vic7b-uncensored-q5_1.bin
+
+  -- For more random answers to reduce load to the cpu
+
+            ./main -i --interactive-first -r "### Human:" --temp 1 -c 2048 -n -1 --ignore-eos --repeat_penalty 1.2 --instruct -m ./models/ggml-vic7b-uncensored-q5_1.bin
+
+  - summarize note using Vicuna
+    - 
+  - Provide chat functionality with Vicuna
+  - Functionality to export chat to note
+
+- File attachement
+- Tags and Categories(Notebooks and Notes inside Notebooks)
+- Reminders and Notification
+- Collaboration and sharing-. Encryption and Security
